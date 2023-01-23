@@ -27,6 +27,7 @@ window.onload = function() {
 /**
  * Functionality for playing the whole game
  */
+
 function playGame(){
   // *CODE GOES BELOW HERE *
 
@@ -34,7 +35,7 @@ function playGame(){
 
   displayResult(numberGuess);
     
-    }
+  }
 
 
 /**
@@ -45,15 +46,15 @@ function playGame(){
 function displayResult(numberGuess) {
 
   if(numberGuess == correctNumber ){
-    console.log("Number is correct");
+    showYouWon();
     
   }
   else if(numberGuess < correctNumber ){
-    console.log("Number is too low");
+    showNumberBelow();
    
   }
   else{
-    console.log("Number is too high");
+    showNumberAbove();
     
   }
 
@@ -123,8 +124,11 @@ function displayHistory() {
 function getDialog(dialogType, text){
   let dialog;
   switch(dialogType){
-    case "warning":
+    case "high":
       dialog = "<div class='alert alert-warning' role='alert'>"
+      break;
+      case "low":
+      dialog = "<div class='alert alert-danger' role='alert'>"
       break;
     case "won":
       dialog = "<div class='alert alert-success' role='alert'>"
@@ -144,6 +148,8 @@ function showYouWon(){
    */
   // *CODE GOES BELOW HERE *
 
+  let dialog = getDialog("won", text);
+
   document.getElementById("result").innerHTML = dialog;
 }
 
@@ -156,6 +162,9 @@ function showNumberAbove(){
    */
   // *CODE GOES BELOW HERE *
 
+  let dialog = getDialog("high", text);
+
+
   document.getElementById("result").innerHTML = dialog;
 }
 
@@ -167,6 +176,8 @@ function showNumberBelow(){
    * HINT: Use the 'warning' and text parameters 
    */
   // *CODE GOES BELOW HERE *
+
+  let dialog = getDialog("low", text);
 
   document.getElementById("result").innerHTML = dialog;
 }
