@@ -54,7 +54,6 @@ function displayResult(numberGuess) {
 
 /**
  * Initialize a new game by resetting all values and content on the page
- * HINT: reset the correctNumber, guesses, and HTML content
  */
 function initGame(){
 
@@ -69,14 +68,12 @@ function initGame(){
 
   //Reset the guesses display history 
   displayHistory();
+
+  // Reset the form field content 
+  document.getElementById("number-guess").value = "";
 }
 
-/**
- * Reset the HTML content for guess history
- */
-function resetResultContent(){
-  document.getElementById("result").innerHTML = "";
-}
+
 
 /**
  * Return a random number between 1 and 100
