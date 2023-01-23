@@ -1,15 +1,3 @@
-/**
- * Guess The Number Game
- * Done: Get user value from input and save it to variable numberGuess
- * Done: Generate a random number 1 to 100 and save it to variable correctNumber
- * Done: Console whether the guess is too high, too low, or is correct inside playGame function
- * Done: Create a function called displayResult to move the logic for if the guess is too high, too low, or correct
- * TODO: Complete the showYouWon, showNumberAbove, showNumberBelow
- * TODO: Use the showYouWon... functions within displayResult to display the correct dialog
- * TODO: Save the guess history in a variable called guess
- * TODO: Display the guess history using displayHistory() function
- * TODO: Use the initGame() function to restart the game
- */
 
 // Variable to store the list of guesses 
 let guesses = [];
@@ -29,7 +17,6 @@ window.onload = function() {
  */
 
 function playGame(){
-  // *CODE GOES BELOW HERE *
 
   let numberGuess =  document.getElementById('number-guess').value;
 
@@ -42,7 +29,6 @@ function playGame(){
 
 /**
  * Show the result for if the guess it too high, too low, or correct
- * HINT: Use if, else if, else statement 
  */
 
 function displayResult(numberGuess) {
@@ -71,7 +57,18 @@ function displayResult(numberGuess) {
  * HINT: reset the correctNumber, guesses, and HTML content
  */
 function initGame(){
-  // *CODE GOES BELOW HERE *
+
+  //Reset the correct Number to be guessed
+  correctNumber = getRandomNumber();
+
+  // Reset the result display
+  document.getElementById("result").innerHTML = "";
+
+  //Reset the guesses array
+  guesses = [];
+
+  //Reset the guesses display history 
+  displayHistory();
 }
 
 /**
@@ -83,7 +80,6 @@ function resetResultContent(){
 
 /**
  * Return a random number between 1 and 100
- * HINT: Use Math.random 
  */
 function getRandomNumber(){
   return Math.floor(Math.random() * 100) + 1;
@@ -95,8 +91,6 @@ function getRandomNumber(){
 
 /**
  * Save guess history 
- * HINT: Search Google "append to array in javascript"
- * HINT: Use the guesses variable
  */
 function saveGuessHistory(guess) {
   // *CODE GOES BELOW HERE *
@@ -108,20 +102,15 @@ function saveGuessHistory(guess) {
 
 /**
  * Display guess history to user
- * HTML TO USE:
- * <ul class='list-group'>
- *  <li class='list-group-item'>You guessed {number}</li
- * </ul>
- * HINT: use while loop and string concatentation to create a list of guesses
  */
 function displayHistory() {
-  let index = 0; // TODO
+  let index = guesses.length - 1; 
   let list = "<ul class='list-group'>";
-  while(index < guesses.length){
+  while(index >= 0   ){
 
     list += "<li class='list-group-item'>" + 
     "You guessed " + guesses[index] + "</li>";
-      index+=1;
+      index--;
   }
 
   list += '</ul>'
@@ -159,9 +148,7 @@ function showYouWon(){
   /**
    * Retrieve the dialog using the getDialog() function
    * and save it to variable called dialog
-   * HINT: Use the 'won' and text parameters 
    */
-  // *CODE GOES BELOW HERE *
 
   let dialog = getDialog("won", text);
 
@@ -173,9 +160,7 @@ function showNumberAbove(){
   /**
    * Retrieve the dialog using the getDialog() function
    * and save it to variable called dialog
-   * HINT: Use the 'warning' and text parameters 
    */
-  // *CODE GOES BELOW HERE *
 
   let dialog = getDialog("high", text);
 
@@ -188,9 +173,7 @@ function showNumberBelow(){
   /**
    * Retrieve the dialog using the getDialog() function
    * and save it to variable called dialog
-   * HINT: Use the 'warning' and text parameters 
    */
-  // *CODE GOES BELOW HERE *
 
   let dialog = getDialog("low", text);
 
