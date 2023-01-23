@@ -1,9 +1,9 @@
 /**
  * Guess The Number Game
- * TODO: Get user value from input and save it to variable numberGuess
- * TODO: Generate a random number 1 to 100 and save it to variable correctNumber
- * TODO: Console whether the guess is too high, too low, or is correct inside playGame function
- * TODO: Create a function called displayResult to move the logic for if the guess is too high, too low, or correct
+ * Done: Get user value from input and save it to variable numberGuess
+ * Done: Generate a random number 1 to 100 and save it to variable correctNumber
+ * Done: Console whether the guess is too high, too low, or is correct inside playGame function
+ * Done: Create a function called displayResult to move the logic for if the guess is too high, too low, or correct
  * TODO: Complete the showYouWon, showNumberAbove, showNumberBelow
  * TODO: Use the showYouWon... functions within displayResult to display the correct dialog
  * TODO: Save the guess history in a variable called guess
@@ -13,10 +13,13 @@
 
 // Variable to store the list of guesses 
 
+
 // Variable for store the correct random number 
+let correctNumber = getRandomNumber();
 
 
 window.onload = function() {
+  
     document.getElementById("number-submit").addEventListener("click", playGame);
     document.getElementById("restart-game").addEventListener("click", initGame)
 }
@@ -26,13 +29,37 @@ window.onload = function() {
  */
 function playGame(){
   // *CODE GOES BELOW HERE *
-}
+
+  let numberGuess =  document.getElementById('number-guess').value;
+
+  displayResult(numberGuess);
+    
+    }
+
 
 /**
  * Show the result for if the guess it too high, too low, or correct
  * HINT: Use if, else if, else statement 
  */
-// *CODE GOES BELOW HERE *
+
+function displayResult(numberGuess) {
+
+  if(numberGuess == correctNumber ){
+    console.log("Number is correct");
+    
+  }
+  else if(numberGuess < correctNumber ){
+    console.log("Number is too low");
+   
+  }
+  else{
+    console.log("Number is too high");
+    
+  }
+
+
+}
+
 
 
 
@@ -56,8 +83,12 @@ function resetResultContent(){
  * HINT: Use Math.random 
  */
 function getRandomNumber(){
-  // *CODE GOES BELOW HERE *
+  return Math.floor(Math.random() * 100) + 1;
 }
+
+
+
+
 
 /**
  * Save guess history 
